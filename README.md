@@ -5,117 +5,54 @@ A modern, responsive website for Apexy Packers and Movers built with Next.js, Ty
 ## Features
 
 - Modern and responsive design
-- Smooth animations with Framer Motion
-- SEO optimized
+- SEO optimized with meta tags and JSON-LD
 - Fast loading with Next.js
 - Type-safe with TypeScript
 - Beautiful UI with Tailwind CSS
-- Interactive contact form
-- Testimonials slider
-- Animated statistics
-- Mobile-friendly navigation
+- Smooth animations with Framer Motion
 
-## Prerequisites
+## Tech Stack
 
-1. Install Node.js:
-   - Download and install Node.js from [https://nodejs.org/](https://nodejs.org/)
-   - Recommended version: 18.x or later
-   - After installation, restart your computer
-
-2. Verify installation:
-   Open PowerShell or Command Prompt and run:
-   ```bash
-   node --version
-   npm --version
-   ```
-   Both commands should display version numbers.
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Hero Icons
 
 ## Getting Started
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd apexy-packers
+git clone https://github.com/parmarrahul/apexy-packers-website.git
 ```
 
-2. Run the setup script:
-```powershell
-# On Windows (PowerShell)
-.\setup.ps1
-
-# On Linux/Mac
-chmod +x setup.sh
-./setup.sh
+2. Install dependencies:
+```bash
+cd apexy-packers-website
+npm install
 ```
 
-3. Start the development server:
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-The website should now be running at [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
 ```
 apexy-packers/
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx    # Root layout with metadata
-│   │   ├── page.tsx      # Home page
-│   │   └── globals.css   # Global styles
-│   ├── components/
-│   │   ├── Header.tsx    # Navigation header
-│   │   ├── Hero.tsx      # Hero section
-│   │   ├── Services.tsx  # Services section
-│   │   ├── Stats.tsx     # Statistics section
-│   │   ├── Testimonials.tsx # Testimonials slider
-│   │   └── ContactForm.tsx  # Contact form
-│   └── types/
-│       └── index.d.ts    # TypeScript declarations
-├── public/
-│   └── images/           # Image assets
-├── package.json
-├── tsconfig.json
-├── tailwind.config.js
-├── setup.ps1             # Windows setup script
-├── setup.sh             # Linux/Mac setup script
-└── README.md
+│   ├── app/              # Next.js app directory
+│   ├── components/       # React components
+│   └── types/           # TypeScript type definitions
+├── public/              # Static files
+└── package.json         # Project dependencies
 ```
 
-## Available Scripts
+## Contact
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-
-## Required Images
-
-Add the following images to the `public/images` directory:
-- `moving-truck.jpg` - Hero section image
-- `domestic-shifting.jpg` - Domestic shifting service
-- `vehicle-shifting.jpg` - Vehicle transport service
-- `international-shifting.jpg` - International shipping
-- `corporate-shifting.jpg` - Corporate relocation
-
-Add testimonial images to `public/images/testimonials/`:
-- `aarav.jpg`
-- `ragani.jpg`
-- `reyansh.jpg`
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support, email info@apexypackers.com or call +91 9826610106. 
+For any queries, please contact:
+- Email: apexypackers@gmail.com
+- Phone: +91 88173 57936 
