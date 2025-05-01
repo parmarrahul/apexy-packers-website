@@ -1,86 +1,75 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
-const stats: Stats[] = [
+const stats = [
   {
-    value: "10+",
-    label: "Years of Trust",
-    description: "delivering smiles since 2015"
+    number: "10+",
+    label: "years of trust",
+    subtext: "delivering smiles since 2015"
   },
   {
-    value: "5000+",
-    label: "Moves Annually",
-    description: "happily across the world"
+    number: "5000+",
+    label: "moves annually",
+    subtext: "happily across the world"
   },
   {
-    value: "50+",
+    number: "50+",
     label: "Total Location",
-    description: "In India"
+    subtext: "In India"
   },
   {
-    value: "100+",
-    label: "Trained Manpower",
-    description: "Makes your move safe & on time"
+    number: "100+",
+    label: "Trained manpower",
+    subtext: "Makes your move safe & on time"
   }
 ];
 
-const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) => {
-  const [count, setCount] = useState(0);
+const Stats = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref);
-  const numericValue = parseInt(value);
 
   useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = numericValue;
-      const incrementTime = (duration * 1000) / end;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-      const counter = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === end) clearInterval(counter);
-      }, incrementTime);
-
-      return () => clearInterval(counter);
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-  }, [isInView, numericValue, duration]);
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
 
   return (
-    <span ref={ref} className="text-4xl md:text-5xl font-bold text-primary">
-      {isNaN(numericValue) ? value : count + (value.includes('+') ? '+' : '')}
-    </span>
-  );
-};
-
-const Stats = () => {
-  return (
-    <section className="py-16 bg-gray-50">
-      <div className="container">
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Our Strengths, Which Makes Us
-          </h2>
-          <p className="text-xl text-gray-600">
-            The Most Preferable Moving Brand
-          </p>
+          <h2 className="text-3xl font-bold mb-4">our strengths, which makes us</h2>
+          <p className="text-xl text-primary font-semibold">the Most preferable moving brand</p>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center p-6 bg-white rounded-lg shadow-lg"
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="bg-white p-6 rounded-lg shadow-lg text-center"
             >
-              <Counter value={stat.value} />
-              <h3 className="text-xl font-semibold mt-4 mb-2">{stat.label}</h3>
-              <p className="text-gray-600">{stat.description}</p>
+              <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}</h3>
+              <p className="text-xl font-semibold text-gray-800 mb-2">{stat.label}</p>
+              <p className="text-gray-600">{stat.subtext}</p>
             </motion.div>
           ))}
         </div>
